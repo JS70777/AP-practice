@@ -1,6 +1,7 @@
 package StringCoder;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class StringCoder {
     private String masterString;
@@ -45,8 +46,9 @@ public class StringCoder {
     }
     
     public static void main(String[] args) {
-        StringCoder sc = new StringCoder("sixtyzipperswerequicklypickedfromthewovenjutebag");
-        ArrayList<StringPart> strs = sc.encodeString("overeager");
+        Scanner scan = new Scanner(System.in);
+        StringCoder sc = new StringCoder(scan.nextLine());
+        ArrayList<StringPart> strs = sc.encodeString(scan.nextLine());
         System.out.println(sc.decodeString(strs));
     }
 }
