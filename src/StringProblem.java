@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 public class StringProblem {
     public static String scrambleWord(String word) {
@@ -14,16 +15,26 @@ public class StringProblem {
         return out;
     }
     public static void scrambleOrRemove(List<String> wordList) {
-    
+        for(int i = 0; i < wordList.size(); i++) {
+            String word = wordList.get(i);
+            String scramble = scrambleWord(word);
+            if(scramble.equals(word)) {
+                wordList.remove(word);
+                i--;
+            } else {
+                wordList.set(i, scramble);
+            }
+        }
     }
     
     public static void main(String[] args) {
-        System.out.println(scrambleWord("TAN"));
-        System.out.println(scrambleWord("ABRACADABRA"));
-        System.out.println(scrambleWord("WHOA"));
-        System.out.println(scrambleWord("AARDVARK"));
-        System.out.println(scrambleWord("EGGS"));
-        System.out.println(scrambleWord("A"));
-        System.out.println(scrambleWord(""));
+        List<String> wordList = new ArrayList <>();
+        wordList.add("TAN");
+        wordList.add("ABRACADABRA");
+        wordList.add("WHOA");
+        wordList.add("APPLE");
+        wordList.add("EGGS");
+        scrambleOrRemove(wordList);
+        System.out.println(wordList);
     }
 }
