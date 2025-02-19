@@ -37,7 +37,7 @@ public class ClimbingClub {
         }
         ClimbInfo currInfo = climbList.get(0);
         String prevName = currInfo.getName();
-        String currName = null;
+        String currName;
         int numNames = 1;
         for (int k = 1; k < climbList.size(); k++) {
             currInfo = climbList.get(k);
