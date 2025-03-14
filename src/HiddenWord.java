@@ -1,5 +1,7 @@
+import java.util.Scanner;
+
 public class HiddenWord {
-    private String hidden;
+    private final String hidden;
     
     public HiddenWord(String str) {
         hidden = str;
@@ -13,9 +15,9 @@ public class HiddenWord {
                 out += c;
             } else {
                 if(hidden.indexOf(c) > -1) {
-                    out += '+';
+                    out += '_';
                 } else {
-                    out += '*';
+                    out += '-';
                 }
             }
         }
@@ -24,11 +26,17 @@ public class HiddenWord {
     
     
     public static void main(String[] args) {
-        HiddenWord puzzle = new HiddenWord("HARPS");
-        System.out.println(puzzle.getHint("AAAAA"));
-        System.out.println(puzzle.getHint("HELLO"));
-        System.out.println(puzzle.getHint("HEART"));
-        System.out.println(puzzle.getHint("HARMS"));
-        System.out.println(puzzle.getHint("HARPS"));
+        String word = "TAPER";
+        HiddenWord puzzle = new HiddenWord(word);
+        Scanner scan = new Scanner(System.in);
+        String in = "";
+        while(!in.equals(word)) {
+            in = scan.nextLine();
+            if(in.length() == word.length()) {
+                System.out.println(puzzle.getHint(in));
+            } else {
+                System.out.println("Wrong length");
+            }
+        }
     }
 }
